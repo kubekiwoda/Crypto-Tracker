@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTracker Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <div class="logo-icon">C</div>
+                    <span>Tracker</span>
+                </div>
+                <nav>
+                    <a href="#" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <a href="#" class="nav-link"><i class="fas fa-wallet"></i> Portfolio</a>
+                    <a href="#" class="nav-link"><i class="fas fa-history"></i> History</a>
+                </nav>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="asset-list" id="sidebarAssets">
+                    </div>
+                <div class="user-mini">JD</div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="header">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Filter holdings...">
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" id="refreshBtn"><i class="fas fa-sync-alt"></i></button>
+                    <div class="avatar-mini">JD</div>
+                </div>
+            </header>
+
+            <div class="content">
+                <section class="card chart-card">
+                    <div class="card-top">
+                        <h2 id="chartTitle">Market Overview</h2>
+                        <div class="time-btns">
+                            <button class="time-btn" data-hours="24">1D</button>
+                            <button class="time-btn active" data-hours="168">1W</button>
+                        </div>
+                    </div>
+                    <div class="chart-wrap">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-top">
+                        <h2>Your Holdings</h2>
+                        <button class="btn-line" id="addCoinBtn"><i class="fas fa-plus"></i> Add Coin</button>
+                    </div>
+                    <div class="holdings-header">
+                        <span>Asset</span>
+                        <span>Balance</span>
+                        <span>Value</span>
+                        <span>Action</span>
+                    </div>
+                    <div class="holdings" id="holdingsList"></div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="panel">
+            <div class="card detail-card" id="detailPanel">
+                <div class="detail-center">
+                    <img src="" alt="" id="detailImg" class="coin-logo-lg">
+                    <div class="detail-meta">
+                        <h3 id="detailName">---</h3>
+                        <span class="ticker" id="detailSymbol">---</span>
+                    </div>
+                    <div class="detail-price" id="detailPrice">$0.00</div>
+                    <div class="change-tag" id="detailChange">0.00%</div>
+                </div>
+                <div class="goal-section">
+                    <div class="goal-row">
+                        <span>Sentiment</span>
+                        <span id="progressText">50%</span>
+                    </div>
+                    <div class="goal-bar">
+                        <div class="goal-fill" id="progressFill" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Top Gainers</h3>
+                <div class="gainers" id="topGainers"></div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Latest News</h3>
+                <div class="news-feed" id="newsFeed"></div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="modal-overlay" id="addCoinModal">
+        <div class="modal">
+            <div class="modal-top">
+                <h3>Add to Portfolio</h3>
+                <button class="icon-btn" id="closeModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="coinSearch" placeholder="Search 250+ coins...">
+            </div>
+            <div class="coin-list" id="coinList"></div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
